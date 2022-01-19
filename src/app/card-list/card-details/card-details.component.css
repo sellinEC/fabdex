@@ -1,0 +1,25 @@
+.flex-container {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4f4f4;
+  /* Main axis */
+  justify-content: center;
+  /* cross-axis */
+  align-items: center;
+}
+
+.item {
+  width: 100px;
+  height: 100px;
+  background-color: #226109;
+  color: #fff;
+  margin: 10px;
+}
+
+.item:nth-of-type(3) {
+  align-self: start;
+}
+.item:nth-of-type(1) {
+  align-self: end;
+}
