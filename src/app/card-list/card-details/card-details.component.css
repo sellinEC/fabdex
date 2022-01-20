@@ -96,6 +96,13 @@ h2 {
   margin-right: 10px;
 }
 
+.rulebox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
 @media (max-width: 768px) {
   .header .container {
     flex-direction: column;

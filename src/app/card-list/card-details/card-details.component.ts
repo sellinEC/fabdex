@@ -9,7 +9,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CardDetailsComponent implements OnInit {
   card: any
+  rulesCount: number = 0
   identifier: string = ''
+  expand: boolean = false
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
@@ -21,11 +23,28 @@ export class CardDetailsComponent implements OnInit {
         this.dataService.getDetails(this.identifier).subscribe((response: any) => {
           this.card = response
           console.log(this.card)
+
+          this.countRules(this.card)
         })
       }
+
 
     )
 
   }
 
+  countRules(card: any) {
+    let totalRules = 0
+    card.rulings.forEach((rule: any) => {
+      totalRules +=1
+      console.log(rule);
+      console.log(totalRules);
+    });
+    this.rulesCount = totalRules
+  }
+
+  onExpand() {
+    this.expand = !this.expand
+    console.log('click');
+  }
 }
