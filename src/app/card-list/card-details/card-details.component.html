@@ -7,12 +7,16 @@
 <a href="" routerLink="/cardlist/buckling-blow-red">related cards
 </a> -->
 <header class="header">
+  <h1 class="text-center">{{card.name}}</h1>
   <div class="container">
-    <div>
-      <h1>Card details</h1>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, deleniti.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, deleniti.</p>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, deleniti.</p>
+    <div class="box">
+      <p>{{card.text}}</p>
+      <div *ngIf="card.flavour">
+        <hr>
+        <p class="fst-italic">{{card.flavour}}</p>
+      </div>
+
+
     </div>
     <img [src]="card.image" alt={{card.name}}>
   </div>
@@ -21,34 +25,17 @@
 <section class="boxes">
   <div class="container">
     <div class="box">
-      <h2>
+      <h3>
         <i class="fas fa-arrows-alt-v"></i>
-        SOme kind of info
-        <p>
-          Paragraf Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste illo unde quia!llo unde quia!llo unde
-          quia!
-        </p>
-      </h2>
+        Rulings
+
+      </h3>
+      <p *ngFor="let ruling of card.rulings">
+        {{ruling.description}}
+      </p>
+
     </div>
-    <div class="box">
-      <h2>
-        <i class="fas fa-mobile"></i>
-        SOme kind of info
-        <p>
-          Paragraf Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste illo unde quia!llo unde quia!llo unde
-          quia!
-        </p>
-      </h2>
-    </div>
-    <div class="box">
-      <h2>
-        <i class="fas fa-arrows-alt"></i>
-        SOme kind of info
-        <p>
-          Paragraf Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste illo unde quia!llo unde quia!llo unde
-          quia!
-        </p>
-      </h2>
-    </div>
+
+
   </div>
 </section>
