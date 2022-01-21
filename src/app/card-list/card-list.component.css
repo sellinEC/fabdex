@@ -5,3 +5,37 @@ ul {
 pagination-controls {
   text-align: center;
 }
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: large;
+  margin-left: 15px;
+}
+a:hover {
+  color: bisque;
+}
+
+.btn-custom {
+  color: #fff;
+  background-color: rgb(67, 80, 107);
+  width: 100%;
+  font-weight: bold;
+  /* border: ; */
+}
+
+.btn-second {
+  color: #fff;
+  background-color: rgb(67, 80, 107);
+  width: 15%;
+}
+
+.wrapper {
+  align-items: center;
+  justify-content: center;
+}
+
+.setColor {
+  color: bisque;
+}

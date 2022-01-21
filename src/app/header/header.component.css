@@ -6,7 +6,7 @@ header {
   background-color: seagreen;
 }
 
-header h1 {
+.logo {
   text-transform: uppercase;
   color: white;
   letter-spacing: 3px;

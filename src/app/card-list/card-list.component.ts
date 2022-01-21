@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
@@ -12,12 +12,15 @@ import { PaginatePipe } from 'ngx-pagination';
 })
 export class CardListComponent implements OnInit {
   @ViewChild('form') keywordSearch!: NgForm
+
+
   cardlist: any[] = []
   page = 1;
   totalCards!: number;
 
   //keywords - experiment med search framgent
-  keywords: any = ''  //kan tas i multiplar
+  keywords: any = ''  //kan tas i multiplar med lite arbete i dataservice
+  set: any = ''
   activeSub!: Subscription
   constructor(private dataService: DataService) {
 
@@ -38,11 +41,19 @@ export class CardListComponent implements OnInit {
 //   })
 // }
 getCards() {
-  this.dataService.getCards(9, this.page, this.keywords).subscribe((response: any ) => {
+  this.dataService.getCards(9, this.page, this.keywords, this.set).subscribe((response: any ) => {
     this.cardlist = response.data
     this.totalCards = (response.meta.last_page * 9) //api-variabel
 
   })
+}
+
+//
+onNavFilter(set:string) {
+  this.set = set
+  // console.log(this.dataService.set);
+  this.getCards()
+
 }
 
 onSubmit(keyword: NgForm) {
@@ -50,7 +61,11 @@ onSubmit(keyword: NgForm) {
   this.page = 1
   this.keywords = keyword.value.keyword
   this.getCards()
-  this.keywordSearch.reset()
+  // this.keywordSearch.reset()
 }
 
+onClear() {
+  this.keywordSearch.reset()
+  this.getCards()
+}
 }
