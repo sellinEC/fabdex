@@ -79,6 +79,19 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+.wrapper {
+  justify-content: center;
+}
+.wrapper img {
+  height: 20px;
+}
+
+.wrapped {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .box {
   flex: 1;
@@ -103,6 +116,14 @@ h2 {
   border: 1px solid;
 }
 
+.fas {
+  color: #fff;
+  font-weight: bold;
+}
+
+.fas:hover {
+  color: bisque;
+}
 @media (max-width: 768px) {
   .header .container {
     flex-direction: column;
