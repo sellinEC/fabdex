@@ -38,6 +38,7 @@ onNavFilter(set:string) {
   //set för funktion i store
   this.dataService.setSet(set)
   // console.log(this.dataService.set);
+  //Sätter titel vid valt set
   this.setSetTitle(set)
   this.dataService.getCards()
   console.log('first ' + this.dataService.set);
@@ -45,6 +46,7 @@ onNavFilter(set:string) {
 
 }
 
+//Sätter titel vid valt set
 setSetTitle(string:any) {
 switch (string) {
   case '':
