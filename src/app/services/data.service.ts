@@ -11,6 +11,7 @@ export class DataService {
   cardsChanged = new Subject<any[]>()
   totalCardsChanged = new Subject<number>()
   pageHasChanged = new Subject<number>()
+  setHasChanged = new Subject<string>()
   cardlist :any[] = []
 
   //Search/filter variabler
@@ -44,6 +45,17 @@ export class DataService {
   setPage(page: number) {
     this.page = page
 
+  }
+
+
+
+  clearValues() {
+  this.set = ''
+  this.keywords = ''
+
+  this.limit = 9
+  this.page =1
+  this.setHasChanged.next(this.set)
   }
 
 

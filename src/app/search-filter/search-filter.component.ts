@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -15,9 +16,17 @@ export class SearchFilterComponent implements OnInit {
   set: string = ''
   page!: number;
   setTitle: string = ''
+
+  checkSet!: Subscription
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
+    this. checkSet = this.dataService.setHasChanged.subscribe(
+      (set: string) => {
+        // this.set = set
+        this.setSetTitle(set)
+      }
+    )
   }
 
 
