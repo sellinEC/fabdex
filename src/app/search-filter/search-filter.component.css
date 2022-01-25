@@ -31,3 +31,22 @@ a:hover {
 .setColor {
   color: bisque;
 }
+
+.setTitle {
+  color: bisque;
+  font-weight: bold;
+  font-size: larger;
+  /* justify-self: center; */
+  /* align-self: space-between; */
+  margin-left: 25%;
+}
+
+.selfer {
+  /* justify-content: space-between; */
+}
+
+@media (max-width: 768px) {
+  .setTitle {
+    display: none;
+  }
+}

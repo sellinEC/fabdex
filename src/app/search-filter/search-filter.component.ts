@@ -12,8 +12,9 @@ import { DataService } from '../services/data.service';
 export class SearchFilterComponent implements OnInit {
   @ViewChild('form') keywordSearch!: NgForm
   keywords: any = ''  //kan tas i multiplar med lite arbete i dataservice
-  set: any = ''
+  set: string = ''
   page!: number;
+  setTitle: string = ''
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
@@ -37,10 +38,36 @@ onNavFilter(set:string) {
   //set för funktion i store
   this.dataService.setSet(set)
   // console.log(this.dataService.set);
+  this.setSetTitle(set)
   this.dataService.getCards()
   console.log('first ' + this.dataService.set);
   this.dataService.cardsChanged
 
+}
+
+setSetTitle(string:any) {
+switch (string) {
+  case '':
+    this.setTitle = ''
+      break;
+    case 'WTR':
+      this.setTitle = 'Welcome to Rathe'
+        break;
+        case 'ARC':
+  this.setTitle = 'Arcane Rising'
+    break;
+    case 'CRU':
+  this.setTitle = 'Crucible of War'
+    break;
+    case 'MON':
+      this.setTitle = 'Monarch'
+        break;
+        case 'ELE':
+          this.setTitle = 'Tales of Aria'
+            break;
+  default: this.setTitle = ''
+    break;
+}
 }
 
 onClear() {

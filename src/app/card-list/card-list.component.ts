@@ -38,7 +38,7 @@ export class CardListComponent implements OnInit {
       )
       this.dataService.totalCardsChanged.subscribe(
         (total: number) => {
-          this.totalCards = total
+          this.totalCards = total * 9 //(*9 ger rätt total cards till pagination)
         }
       )
   }
@@ -54,20 +54,10 @@ export class CardListComponent implements OnInit {
 // }
 
 
-getCards() {
+cardPagination() {
+
+  this.dataService.setPage(this.page)
   this.dataService.getCards()
   }
-
-
-
-
-
-
-
-
-
-onTest() {
-  console.log(this.dataService.cardlist);
-}
 
 }

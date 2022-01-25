@@ -1,7 +1,4 @@
 <div class="container">
-  <button (click)="onTest()">TEST!</button>
-
-
   <ul class="row">
     <li class="col p-1 pe-auto"
       *ngFor="let card of cardlist | paginate: {itemsPerPage : 9, currentPage: page, totalItems: totalCards}">
@@ -12,4 +9,4 @@
 
 
 </div>
-<pagination-controls (pageChange)="page = $event; cardlist=[]; getCards()"></pagination-controls>
+<pagination-controls (pageChange)="page = $event; cardlist=[]; cardPagination()"></pagination-controls>
