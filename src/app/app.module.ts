@@ -11,6 +11,7 @@ import { CardDetailsComponent } from './card-list/card-details/card-details.comp
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FourofourComponent } from './fourofour/fourofour.component';
+import { SearchFilterComponent } from './search-filter/search-filter.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FourofourComponent } from './fourofour/fourofour.component';
     HeaderComponent,
     CardListComponent,
     CardDetailsComponent,
-    FourofourComponent
+    FourofourComponent,
+    SearchFilterComponent
   ],
   imports: [
     BrowserModule,

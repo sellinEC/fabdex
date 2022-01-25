@@ -1,0 +1,35 @@
+<div>
+  <ul class="nav">
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('')" [ngClass]="set=='' ? 'setColor' : ''">All</a>
+    </li>
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('WTR')" [ngClass]="set=='WTR' ? 'setColor' : ''">WTR</a>
+    </li>
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('CRU')" [ngClass]="set=='CRU' ? 'setColor' : ''">CRU</a>
+    </li>
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('MON')" [ngClass]="set=='MON' ? 'setColor' : ''">MON</a>
+    </li>
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('ARC')" [ngClass]="set=='ARC' ? 'setColor' : ''">ARC</a>
+    </li>
+    <li>
+      <a href="#" routerLink="/" (click)="onNavFilter('ELE')" [ngClass]="set=='ELE' ? 'setColor' : ''">ELE</a>
+    </li>
+  </ul>
+</div>
+<form (ngSubmit)="onSubmit(form)" class="p-2" #form="ngForm">
+  <div class="form-group">
+
+    <input class="form-control" type="text" name="keyword" ngModel #[keyword]="ngModel" placeholder="Search for card">
+    <div class="d-grid">
+      <button class="btn btn-custom p-2 mt-3">
+        <i class="fas fa-search"></i>
+        Search
+      </button>
+      <button *ngIf="keywords" (click)="onClear()">CLEAR</button>
+    </div>
+  </div>
+</form>
