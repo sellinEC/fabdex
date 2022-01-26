@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,7 @@ import { map, Subject } from 'rxjs';
 export class DataService {
 
   constructor(private http: HttpClient) { }
+  //*emitters*
   cardsChanged = new Subject<any[]>()
   totalCardsChanged = new Subject<number>()
   pageHasChanged = new Subject<number>()
@@ -59,7 +60,7 @@ export class DataService {
   }
 
 
-  //Next level
+  //Next level - set up in service to be reachable throughout app when using different components
 
 
   fetchCards(limit: number, page: number, keywords?:string, set?: string) {
@@ -67,7 +68,7 @@ export class DataService {
     let setPayload: string=''
     if(keywords) {
 
-     keywordPayload = '&keywords=' + keywords
+     keywordPayload = '&keywords=' + keywords //needs work for multiple inputs
     }
     if(set) {
       setPayload = '&set=' + set
@@ -77,16 +78,11 @@ export class DataService {
       this.cardlist = response.data
       this.cardsChanged.next(this.cardlist)
       this.totalCards = response.meta.last_page
-      // console.log('från fetchCards ' + response.meta.last_page);
       this.totalCardsChanged.next(this.totalCards)
       this.pageHasChanged.next(page)
     })
-     //fördta map är rxjs för observable, andra är vanlig arraymethod. CHeckar om ingredients finns eller inte och lägger tom array där det inte finns för att undvika bugg i senare steg
+
 
   }
 
-
-  cardsHasChanged() {
-
-  }
 }

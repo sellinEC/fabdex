@@ -1,9 +1,8 @@
 
-import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
-import { PaginatePipe } from 'ngx-pagination';
+
 
 @Component({
   selector: 'app-card-list',
@@ -31,11 +30,9 @@ export class CardListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //fetch cards to store
     this.dataService.getCards()
-    // this.getCards();
     this.cardSub = this.dataService.cardsChanged.subscribe(
       (cards: any[]) => {
         this.cardlist = cards
-        // this.totalCards = this.dataService.totalCards
       }
       )
     this.totalSub =  this.dataService.totalCardsChanged.subscribe(
@@ -52,20 +49,11 @@ export class CardListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
       this.cardSub.unsubscribe()
-      // this.pageSub.unsubscribe()
+      this.totalSub.unsubscribe()
+      this.pageSub.unsubscribe()
   }
 
-
-//   onSubmit(keywordForm : NgForm) {
-//     this.activeSub.unsubscribe()
-//     this.keywords = keywordForm.value
-//     this.activeSub = this.dataService.getCards(this.keywords).subscribe((response: any ) => {
-//       this.cardlist = response.data
-//       console.log(response.data)
-//   })
-// }
-
-
+//pagination set in dataservice to "remember" page after going back from details page
 cardPagination(event: number) {
 
   this.dataService.setPage(event)

@@ -1,5 +1,11 @@
 # Fabdex
 
+Pokedex for grown ups (?)
+
+Built around api from fabdb.net: https://fabdb.net/resources/api
+
+Got browsing, pagination, details with working back-function and searchable cards. Runs not too frustratingly.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
 ## Development server

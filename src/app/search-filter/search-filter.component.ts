@@ -1,4 +1,3 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,7 +11,7 @@ import { DataService } from '../services/data.service';
 })
 export class SearchFilterComponent implements OnInit {
   @ViewChild('form') keywordSearch!: NgForm
-  keywords: any = ''  //kan tas i multiplar med lite arbete i dataservice
+  keywords: any = ''  //needs work in dataservice to buld correct string for multiple keywords
   set: string = ''
   page!: number;
   setTitle: string = ''
@@ -21,10 +20,11 @@ export class SearchFilterComponent implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
+    //Updates set-status from dataservice
     this. checkSet = this.dataService.setHasChanged.subscribe(
       (set: string) => {
-        // this.set = set
         this.setSetTitle(set)
+        this.onNavFilter(set)
       }
     )
   }
@@ -33,12 +33,11 @@ export class SearchFilterComponent implements OnInit {
 
   onSubmit(keyword: NgForm) {
   this.router.navigate(['/cardlist'])
-  console.log(keyword.value.keyword + ' keyword')
   this.dataService.setPage(this.page)
   this.keywords = keyword.value.keyword
   this.dataService.setKeywords(keyword.value.keyword)
   this.dataService.getCards()
-  // this.keywordSearch.reset()
+
 }
 
 onNavFilter(set:string) {
@@ -50,7 +49,6 @@ onNavFilter(set:string) {
   //Sätter titel vid valt set
   this.setSetTitle(set)
   this.dataService.getCards()
-  console.log('first ' + this.dataService.set);
   this.dataService.cardsChanged
 
 }
@@ -82,6 +80,7 @@ switch (string) {
 }
 
 onClear() {
+  //Sets cleared values in dataservice
   this.keywordSearch.reset()
   this.keywords = ''
   this.dataService.setKeywords('')

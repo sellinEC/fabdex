@@ -32,7 +32,7 @@ export class CardDetailsComponent implements OnInit {
     )
 
   }
-
+//sets rules-count
   countRules(card: any) {
     let totalRules = 0
     card.rulings.forEach((rule: any) => {
@@ -43,8 +43,8 @@ export class CardDetailsComponent implements OnInit {
     this.rulesCount = totalRules
   }
 
+  //expands rules-tab
   onExpand() {
     this.expand = !this.expand
-    console.log('click');
   }
 }
