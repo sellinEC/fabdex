@@ -13,7 +13,7 @@ export class CardListComponent implements OnInit, OnDestroy {
 
 
 
-  cardlist!: any[]
+  cardlist!: any[] //Kort-class?
   page!: number
   totalCards!: number;
 

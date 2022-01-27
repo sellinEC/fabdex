@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 export class CardDetailsComponent implements OnInit {
   card: any
   rulesCount: number = 0
+  //card.identofier - sets route :id
   identifier: string = ''
   expand: boolean = false
   constructor(private route: ActivatedRoute, private dataService: DataService) { }

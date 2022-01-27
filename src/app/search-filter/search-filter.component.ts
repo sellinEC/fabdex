@@ -53,7 +53,7 @@ onNavFilter(set:string) {
 
 }
 
-//Sätter titel vid valt set
+//Sätter titel vid valt set i "navven"
 setSetTitle(string:any) {
 switch (string) {
   case '':
@@ -74,6 +74,9 @@ switch (string) {
         case 'ELE':
           this.setTitle = 'Tales of Aria'
             break;
+            case 'EVR':
+              this.setTitle = 'Everfest'
+                break;
   default: this.setTitle = ''
     break;
 }
