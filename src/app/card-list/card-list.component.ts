@@ -36,8 +36,8 @@ export class CardListComponent implements OnInit, OnDestroy {
       }
       )
     this.totalSub =  this.dataService.totalCardsChanged.subscribe(
-        (total: number) => {
-          this.totalCards = total * 9 //(*9 ger rätt total cards till pagination)
+        (totalCards: number) => {
+          this.totalCards = totalCards
         }
       )
     this.pageSub =  this.dataService.pageHasChanged.subscribe(

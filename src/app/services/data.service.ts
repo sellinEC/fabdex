@@ -2,14 +2,28 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
+
+/**Centralized dataservice provied app
+ * @example
+ * gets data hej
+ */
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   constructor(private http: HttpClient) { }
   //*emitters*
   cardsChanged = new Subject<any[]>()
+  /**total cards
+   * @example
+   * totalCardsChanged.subscribe(
+        (totalCards: number) => {
+          this.totalCards = totalCards
+        }
+      )
+   */
   totalCardsChanged = new Subject<number>()
   pageHasChanged = new Subject<number>()
   setHasChanged = new Subject<string>()
@@ -21,7 +35,8 @@ export class DataService {
   //pagination variabler
   limit: number = 9
   page!: number
-  totalCards!: number
+  //Pages för pagination
+  // totalPages!: number
 
 
   //Get cards
@@ -77,8 +92,8 @@ export class DataService {
     .subscribe((response: any)=> {
       this.cardlist = response.data
       this.cardsChanged.next(this.cardlist)
-      this.totalCards = response.meta.last_page
-      this.totalCardsChanged.next(this.totalCards)
+      //Sends total cards for pagination
+      this.totalCardsChanged.next(response.meta.total)
       this.pageHasChanged.next(page)
     })
 

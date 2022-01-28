@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FourofourComponent } from './fourofour/fourofour.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
+import { AdvancedComponent } from './advanced/advanced.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchFilterComponent } from './search-filter/search-filter.component';
     CardListComponent,
     CardDetailsComponent,
     FourofourComponent,
-    SearchFilterComponent
+    SearchFilterComponent,
+    AdvancedComponent
   ],
   imports: [
     BrowserModule,
