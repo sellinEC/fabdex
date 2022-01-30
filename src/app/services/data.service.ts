@@ -27,7 +27,9 @@ export class DataService {
   totalCardsChanged = new Subject<number>()
   pageHasChanged = new Subject<number>()
   setHasChanged = new Subject<string>()
+  monsterHasChanged = new Subject<any[]>()
   cardlist :any[] = []
+  monsterList: any[] = []
 
   //Search/filter variabler
   set: string = ''
@@ -98,6 +100,11 @@ export class DataService {
     })
 
 
+  }
+
+  setMonster(monster: any[]) {
+    this.monsterList = monster
+    this.monsterHasChanged.next(monster)
   }
 
 }

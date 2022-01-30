@@ -13,6 +13,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FourofourComponent } from './fourofour/fourofour.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 import { AdvancedComponent } from './advanced/advanced.component';
+import { AdvancedDetailsComponent } from './advanced/advanced-details/advanced-details.component';
+import { AdvancedFilterComponent } from './advanced/advanced-filter/advanced-filter.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { AdvancedComponent } from './advanced/advanced.component';
     CardDetailsComponent,
     FourofourComponent,
     SearchFilterComponent,
-    AdvancedComponent
+    AdvancedComponent,
+    AdvancedDetailsComponent,
+    AdvancedFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,12 @@
-<p>advanced works!</p>
+<app-advanced-filter></app-advanced-filter>
+<div class="container">
+  <button class="btn btn-success" (click)="onMonsterCalls()">DO IT!</button>
+  <ul class="row">
+    <li class="col p-1 pe-auto" *ngFor="let card of cardlist ">
+      <a href="" [routerLink]="['/advanced', card.identifier]"><img [src]="card.image" alt=""></a>
+
+    </li>
+  </ul>
+
+
+</div>

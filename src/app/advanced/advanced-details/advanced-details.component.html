@@ -1,0 +1,76 @@
+<header class="header">
+  <div class="container">
+    <div class="box">
+      <h1 class="text-center">{{card.name}}</h1>
+      <p>{{card.text}}</p>
+      <div *ngIf="card.flavour">
+        <hr>
+        <p class="fst-italic">{{card.flavour}}</p>
+      </div>
+      <hr>
+      <div class="wrapper d-flex">
+        <div class="wrapped" *ngIf="card.stats.attack != null">
+          <img src="/assets/img/attack.png" alt="">
+          <div>
+            : attack ({{card.stats.attack}})
+          </div>
+        </div>
+        <div class="wrapped" *ngIf="card.stats.defense != null">
+          <img src="/assets/img/defense.png" alt="">
+          <div>
+            : defense ({{card.stats.defense}})
+          </div>
+        </div>
+        <div class="wrapped" *ngIf="card.stats.cost != null">
+          <img src="/assets/img/resource.png" alt="">
+          <div>
+            : cost ({{card.stats.cost}})
+          </div>
+        </div>
+
+        <div class="wrapped" *ngIf="card.stats.resource != null">
+          <div>
+            <img src="/assets/img/pitch-{{card.stats.resource}}.png" alt="">
+          </div>
+
+          <div>
+            : pitch ({{card.stats.resource}})
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <img [src]="card.image" alt={{card.name}}>
+  </div>
+</header>
+
+<section class="boxes">
+  <div class="container" *ngIf="card.rulings != 0">
+    <div class="box">
+      <div>
+        <h3 (click)="onExpand()" class="clicker">
+          Rulings ({{rulesCount}})
+
+        </h3>
+      </div>
+
+
+      <hr>
+
+      <div *ngIf="expand">
+
+
+        <div *ngFor="let ruling of card.rulings">
+          <p>{{ruling.description}}</p>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="d-flex container">
+    <i routerLink="/advanced" class="fas fa-arrow-left clicker"> BACK</i>
+  </div>
+</section>
